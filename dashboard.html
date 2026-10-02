@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - SFS</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="dashboard-navbar">
+
+        <div class="logo">
+            <span>SFS</span>
+            <p>Secure File Sharing</p>
+        </div>
+
+        <div class="user-menu">
+
+            <span id="welcomeUser">
+                Welcome, User
+            </span>
+
+            <button id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN DASHBOARD ================= -->
+
+    <main class="dashboard-container">
+
+
+        <!-- Welcome Section -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <p class="small-title">
+                    SFS DASHBOARD
+                </p>
+
+                <h1>
+                    Welcome back! 👋
+                </h1>
+
+                <p>
+                    Manage, upload and securely share your files.
+                </p>
+
+            </div>
+
+
+            <button
+                class="upload-main-btn"
+                id="uploadBtn"
+            >
+                + Upload File
+            </button>
+
+        </section>
+
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-container">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📁
+                </div>
+
+                <div>
+
+                    <p>Total Files</p>
+
+                    <h2 id="totalFiles">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔗
+                </div>
+
+                <div>
+
+                    <p>Shared Files</p>
+
+                    <h2 id="sharedFiles">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <p>Protected Files</p>
+
+                    <h2 id="protectedFiles">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💾
+                </div>
+
+                <div>
+
+                    <p>Storage Used</p>
+
+                    <h2 id="storageUsed">
+                        0 MB
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FILE MANAGEMENT ================= -->
+
+        <section class="file-section">
+
+
+            <!-- Section Header -->
+
+            <div class="file-section-header">
+
+                <div>
+
+                    <p class="small-title">
+                        FILE MANAGEMENT
+                    </p>
+
+                    <h2>
+                        My Files
+                    </h2>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        id="fileSearch"
+                        placeholder="Search files..."
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- File Filter -->
+
+            <div class="file-filters">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="all"
+                >
+                    All Files
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="shared"
+                >
+                    Shared
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="protected"
+                >
+                    Protected
+                </button>
+
+            </div>
+
+
+
+            <!-- ================= FILE TABLE ================= -->
+
+            <div class="file-table-container">
+
+                <table class="file-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                File
+                            </th>
+
+                            <th>
+                                Size
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Protection
+                            </th>
+
+                            <th>
+                                Downloads
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="fileList">
+
+                        <!-- Files will be loaded here using JavaScript -->
+
+                        <tr id="emptyFiles">
+
+                            <td
+                                colspan="6"
+                                class="empty-files"
+                            >
+
+                                <div class="empty-icon">
+                                    📂
+                                </div>
+
+                                <h3>
+                                    No files yet
+                                </h3>
+
+                                <p>
+                                    Upload your first file to get started.
+                                </p>
+
+                                <button
+                                    class="upload-small-btn"
+                                    id="emptyUploadBtn"
+                                >
+                                    Upload File
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RECENT ACTIVITY ================= -->
+
+        <section class="activity-section">
+
+            <div class="section-heading-left">
+
+                <p class="small-title">
+                    ACTIVITY
+                </p>
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+            </div>
+
+
+            <div
+                class="activity-list"
+                id="activityList"
+            >
+
+                <div class="activity-empty">
+
+                    <span>
+                        🕒
+                    </span>
+
+                    <p>
+                        No recent activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= UPLOAD MODAL ================= -->
+
+    <div
+        class="modal hidden"
+        id="uploadModal"
+    >
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="small-title">
+                        FILE UPLOAD
+                    </p>
+
+                    <h2>
+                        Upload File
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="close-modal"
+                    id="closeUploadModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- Upload Form -->
+
+            <form id="uploadForm">
+
+
+                <!-- File Selection -->
+
+                <div class="file-upload-area">
+
+                    <div class="upload-icon">
+                        📤
+                    </div>
+
+                    <h3>
+                        Select a file
+                    </h3>
+
+                    <p>
+                        Choose a file from your device
+                    </p>
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Password Protection -->
+
+                <div class="protection-option">
+
+                    <div>
+
+                        <h3>
+                            🔐 Password Protect
+                        </h3>
+
+                        <p>
+                            Require a password before the file can be downloaded.
+                        </p>
+
+                    </div>
+
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="protectFile"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- File Password -->
+
+                <div
+                    class="form-group hidden"
+                    id="filePasswordGroup"
+                >
+
+                    <label for="filePassword">
+                        File Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="filePassword"
+                        placeholder="Create a file password"
+                    >
+
+                </div>
+
+
+
+                <!-- Upload Button -->
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Upload File
+                </button>
+
+
+                <p
+                    id="uploadMessage"
+                    class="form-message"
+                ></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script type="module" src="./js/dashboard.js"></script>
+
+</body>
+
+</html>

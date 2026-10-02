@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shared File - SFS</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>SFS</span>
+            <p>Secure File Sharing</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html" class="login-btn">Login</a>
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= SHARED FILE ================= -->
+
+    <main class="share-container">
+
+        <div class="share-card">
+
+
+            <!-- SFS Icon -->
+
+            <div class="share-logo">
+                ☁️
+            </div>
+
+
+            <!-- Loading State -->
+
+            <div id="loadingState">
+
+                <h1>
+                    Loading File...
+                </h1>
+
+                <p>
+                    Please wait while we retrieve the file information.
+                </p>
+
+                <div class="loading-spinner"></div>
+
+            </div>
+
+
+
+            <!-- ================= FILE INFORMATION ================= -->
+
+            <div
+                id="fileInfo"
+                class="hidden"
+            >
+
+                <p class="small-title">
+                    SHARED FILE
+                </p>
+
+                <h1 id="fileName">
+                    Project_Report.pdf
+                </h1>
+
+                <div class="shared-file-details">
+
+                    <div>
+                        <span>📄</span>
+                        <p>
+                            Type:
+                            <strong id="fileType">
+                                PDF
+                            </strong>
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>💾</span>
+                        <p>
+                            Size:
+                            <strong id="fileSize">
+                                2.5 MB
+                            </strong>
+                        </p>
+                    </div>
+
+                    <div>
+                        <span>📅</span>
+                        <p>
+                            Uploaded:
+                            <strong id="uploadDate">
+                                -
+                            </strong>
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= PROTECTED FILE ================= -->
+
+                <div
+                    id="protectedFile"
+                    class="protection-message hidden"
+                >
+
+                    <div class="large-security-icon">
+                        🔐
+                    </div>
+
+                    <h2>
+                        Password Protected
+                    </h2>
+
+                    <p>
+                        This file is protected by the uploader.
+                        Enter the password to download it.
+                    </p>
+
+
+                    <form id="filePasswordForm">
+
+                        <div class="form-group">
+
+                            <label for="sharePassword">
+                                File Password
+                            </label>
+
+                            <div class="password-box">
+
+                                <input
+                                    type="password"
+                                    id="sharePassword"
+                                    placeholder="Enter file password"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    id="toggleSharePassword"
+                                    class="show-password"
+                                >
+                                    Show
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="download-btn"
+                        >
+                            🔓 Unlock & Download
+                        </button>
+
+
+                        <p
+                            id="passwordMessage"
+                            class="form-message"
+                        ></p>
+
+                    </form>
+
+                </div>
+
+
+
+                <!-- ================= UNPROTECTED FILE ================= -->
+
+                <div
+                    id="unprotectedFile"
+                    class="unprotected-message hidden"
+                >
+
+                    <div class="large-security-icon">
+                        📥
+                    </div>
+
+                    <h2>
+                        Ready to Download
+                    </h2>
+
+                    <p>
+                        This file is not password protected.
+                    </p>
+
+                    <button
+                        id="downloadBtn"
+                        class="download-btn"
+                    >
+                        Download File
+                    </button>
+
+                </div>
+
+
+
+                <!-- ================= SHARE INFORMATION ================= -->
+
+                <div class="share-information">
+
+                    <div>
+                        <span>👤</span>
+
+                        <p>
+                            Shared by
+                            <strong id="sharedBy">
+                                SFS User
+                            </strong>
+                        </p>
+                    </div>
+
+
+                    <div>
+                        <span>⬇️</span>
+
+                        <p>
+                            Downloads:
+                            <strong id="downloadCount">
+                                0
+                            </strong>
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Expiration Warning -->
+
+                <div
+                    id="expirationMessage"
+                    class="expiration-message hidden"
+                >
+                    ⏱️ This share link will expire soon.
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ERROR STATE ================= -->
+
+            <div
+                id="errorState"
+                class="hidden"
+            >
+
+                <div class="error-icon">
+                    ⚠️
+                </div>
+
+                <h1>
+                    File Not Available
+                </h1>
+
+                <p id="errorMessage">
+                    This file may have been deleted or the share
+                    link may have expired.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="primary-btn"
+                >
+                    Go to SFS Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <strong>SFS</strong>
+
+            <span>
+                Secure File Sharing
+            </span>
+
+        </div>
+
+        <p>
+            © 2026 SFS. Cloud-Based Secure File Sharing System.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script type="module" src="js/share.js"></script>
+</body>
+
+</html>
+
